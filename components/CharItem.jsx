@@ -1,20 +1,26 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
-const CharItem = ({ name, birth_year, gender, addToFavorites, item, favorites }) => {
+import { Ionicons } from '@expo/vector-icons';
+
+const CharItem = ({ name, gender, addToFavorites, item, favorites }) => {
    const pressHandler = () => {
       addToFavorites(item);
    };
 
+   function trunc(text) {
+      return text.length > 14 ? `${text.substr(0, 14)}..` : text;
+   }
+
    return (
       <View style={styles.container}>
-         <Text>{name}</Text>
-         <Text>{birth_year}</Text>
-         <Text>{gender}</Text>
-         <Pressable
-            onPress={() => pressHandler()}
-            style={[favorites.includes(item) ? styles.liked : styles.likeBtn]}
-         >
-            <Text style={styles.likeBtnText}>Like</Text>
+         <Text style={styles.name}>{trunc(name)}</Text>
+         <Text style={styles.gender}>{gender}</Text>
+         <Pressable style={styles.btn} onPress={() => pressHandler()}>
+            {favorites.includes(item) ? (
+               <Ionicons name='md-heart-sharp' size={24} color='rgb(235, 179, 60)' />
+            ) : (
+               <Ionicons name='md-heart-outline' size={24} color='black' />
+            )}
          </Pressable>
       </View>
    );
@@ -25,38 +31,27 @@ export default CharItem;
 const styles = StyleSheet.create({
    container: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
       alignItems: 'center',
-      backgroundColor: 'lightgray',
+      backgroundColor: 'rgb(51,78,48)',
       borderRadius: 5,
-      paddingHorizontal: 10,
       marginHorizontal: 5,
-      marginVertical: 15,
-   },
-   likeBtn: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 12,
-      paddingHorizontal: 12,
-      borderRadius: 4,
-      backgroundColor: 'darkblue',
-      width: 60,
+      marginVertical: 14,
       height: 40,
    },
-   likeBtnText: {
-      fontSize: 14,
-      fontWeight: 'bold',
-      letterSpacing: 0.25,
+   name: {
+      fontWeight: '600',
       color: 'white',
+      width: 120,
+      marginRight: 50,
+      marginLeft: 20,
    },
-   liked: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 12,
-      paddingHorizontal: 12,
-      borderRadius: 4,
-      backgroundColor: 'darkred',
+   gender: {
       width: 60,
-      height: 40,
+      marginRight: 75,
+      fontWeight: '500',
+      color: 'rgb(231, 164, 62)',
+   },
+   btn: {
+      width: 40,
    },
 });

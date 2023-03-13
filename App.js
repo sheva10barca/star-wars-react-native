@@ -14,7 +14,19 @@ const App = () => {
 
          <Stack.Navigator>
             <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
-            <Stack.Screen name='CharScreen' component={CharScreen} options={{ title: 'Char' }} />
+            <Stack.Screen
+               name='CharScreen'
+               component={CharScreen}
+               options={{
+                  headerStyle: { backgroundColor: 'black' },
+                  headerTintColor: 'white',
+                  headerTitleStyle: {
+                     fontWeight: 'bold',
+                     color: 'rgb(240, 165, 0)',
+                     fontSize: 24,
+                  },
+               }}
+            />
          </Stack.Navigator>
       </NavigationContainer>
    );

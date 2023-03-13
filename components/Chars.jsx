@@ -44,8 +44,18 @@ const Chars = ({ onPress }) => {
    const renderLoader = () => {
       return (
          isLoading && (
-            <View style={{ marginTop: 10 }}>
-               <ActivityIndicator size={'large'} color='blue' />
+            <View style={{ marginVertical: 20, justifyContent: 'center', alignItems: 'center' }}>
+               <Text
+                  style={{
+                     color: 'white',
+                     marginBottom: 20,
+                     fontWeight: 'bold',
+                     fontSize: 24,
+                  }}
+               >
+                  Characters are loading
+               </Text>
+               <ActivityIndicator size={'large'} color='white' />
             </View>
          )
       );
@@ -120,6 +130,6 @@ export default Chars;
 const styles = StyleSheet.create({
    container: {
       flex: 1,
-      backgroundColor: 'black'
+      backgroundColor: 'black',
    },
 });

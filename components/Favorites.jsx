@@ -19,7 +19,12 @@ const Favorites = ({ maleFav, femaleFav, othersFav, resetHandler }) => {
             </View>
          </View>
          <View style={styles.btnContainer}>
-            <Pressable onPress={() => resetHandler()} style={styles.resetBtn}>
+            <Pressable
+               onPress={() => resetHandler()}
+               style={({ pressed }) =>
+                  pressed ? [styles.resetBtn, styles.pressed] : styles.resetBtn
+               }
+            >
                <Text style={styles.resetBtnText}>Reset</Text>
             </Pressable>
          </View>
@@ -31,31 +36,39 @@ export default Favorites;
 
 const styles = StyleSheet.create({
    favoritesContainer: {
-      backgroundColor: 'lightblue',
-      height: 140,
-      marginTop: 50
+      backgroundColor: 'rgb(173,125,55)',
+      height: 160,
+      marginTop: 50,
+      borderRadius: 10,
+      marginBottom: 10,
    },
    favoritesTitle: {
       textAlign: 'center',
       fontWeight: 'bold',
-      marginTop: 10,
-      fontSize: 18,
+      marginTop: 14,
+      fontSize: 20,
+      color: 'white',
    },
    gendersContainer: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginTop: 10,
-      marginHorizontal: 20,
+      justifyContent: 'center',
+      marginTop: 12,
+
       // backgroundColor: 'gray'
    },
    gender: {
       textAlign: 'center',
       fontSize: 17,
+      marginHorizontal: 40,
+      fontWeight: '600',
+      color: 'rgb(51,78,48)',
+      width: 60,
    },
    number: {
       textAlign: 'center',
       marginTop: 10,
       fontSize: 15,
+      fontWeight: '500',
    },
    btnContainer: {
       alignItems: 'center',
@@ -65,17 +78,21 @@ const styles = StyleSheet.create({
    resetBtn: {
       alignItems: 'center',
       justifyContent: 'center',
-      paddingVertical: 12,
-      paddingHorizontal: 12,
+      paddingVertical: 8,
+      paddingHorizontal: 8,
       borderRadius: 4,
-      backgroundColor: 'darkblue',
-      width: 80,
-      height: 40,
+      backgroundColor: 'rgba(0,0,0, 1)',
+      width: 75,
+      height: 35,
+      marginTop: 6,
    },
    resetBtnText: {
       fontSize: 14,
       fontWeight: 'bold',
       letterSpacing: 0.25,
-      color: 'white',
+      color: '#ddceceff',
+   },
+   pressed: {
+      opacity: 0.7,
    },
 });
