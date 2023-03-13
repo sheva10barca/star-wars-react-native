@@ -10,10 +10,10 @@ const Stack = createNativeStackNavigator();
 const App = () => {
    return (
       <NavigationContainer>
-         <StatusBar />
+         <StatusBar style='light' />
 
          <Stack.Navigator>
-            <Stack.Screen name='Home' component={HomeScreen} options={{ title: 'Star Wars' }} />
+            <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name='CharScreen' component={CharScreen} options={{ title: 'Char' }} />
          </Stack.Navigator>
       </NavigationContainer>
